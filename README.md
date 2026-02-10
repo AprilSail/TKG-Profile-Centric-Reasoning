@@ -4,7 +4,7 @@ Official code for the paper **Open-World Temporal Knowledge Graph Reasoning: A P
 The current version of the code fully supports result reproduction. More detailed files (e.g., embedding model downloads, entity/relation embedding generation, and test result files for additional baseline models) will be released soon.
 
 ## 1. Dataset Construction
-In our paper, we construct profile-centric evaluation versions for six publicly available TKG datasets: ICEWS14, ICEWS18, ICEWS05-15, SAIKG, YAGO, and WIKI in `raw_datasets`.
+In our paper, we construct profile-centric evaluation versions for six publicly available TKG datasets: `ICEWS14`, `ICEWS18`, `ICEWS05-15`, `SAIKG`, `YAGO`, and `WIKI` in `raw_datasets`.
 
 ### 1.1 Detailed Information of Backbone Datasets
 The key statistics of these datasets are summarized in the table below:
@@ -45,7 +45,7 @@ python dataset_construct/profile_centric_dataset_construction.py
 Note: Training and validation sets for the TKG datasets can be generated using the same steps above.
 
 ## 2. Baseline Model Evaluation
-In our paper, we retrained and re-evaluated **18 TKG reasoning methods across 5 categories**. To facilitate the application of our evaluation paradigm to new baseline models in future research, we select one representative method from each category (TTransE, RE-GCN, CyGNet, TANGO-DistMult, TimeTraveler) and provide their retrained prediction results as evaluation examples. The prediction results of these 5 models are stored in the `baselines` folder.
+In our paper, we retrained and re-evaluated **18 TKG reasoning methods across 5 categories**. To facilitate the application of our evaluation paradigm to new baseline models in future research, we select one representative method from each category (`TTransE`, `RE-GCN`, `CyGNet`, `TANGO-DistMult`, `TimeTraveler`) and provide their retrained prediction results as evaluation examples. The prediction results of these 5 models are stored in the `baselines` folder.
 
 ### 2.1 Baseline Model Categories
 The 18 baseline models are categorized as follows:
@@ -77,12 +77,12 @@ The 18 baseline models are categorized as follows:
 
 ### 2.3 Evaluation Pipeline
 #### Step 1: Save Model Prediction Results
-Generate prediction results of TKGR baseline models on the original dataset file `test.txt`, save the top-K predictions (corresponding to K in PrH@Q-K) in dictionary format:
+For `CyGNet` as an example, generate prediction results of TKGR baseline models on the original dataset file `test.txt`, save the top-K predictions (corresponding to K in PrH@Q-K) in dictionary format:
 ```bash
-python baseline_evaluate/model_query_prediction.py
+python baseline_evaluate/model_query_prediction(CyGNet).py
 ```
 #### Step 2: Evaluate Profile-Centric Reasoning Performance
-Evaluate the reasoning performance of models on the Profile-Centric-Reasoning task based on their prediction results:
+Evaluate the reasoning performance of models on the Profile-Centric-Reasoning task based on their prediction results in `baseline_preditcion/CyGNet`:
 ```bash
 python baseline_evaluate/model_evaluation.py
 ```
